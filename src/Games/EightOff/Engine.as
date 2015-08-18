@@ -285,11 +285,6 @@ package Games.EightOff
 			return win;	
 		}
 		
-		private function surrenderOnPressSurrenderButton(e:MouseEvent):void {
-			this.isWin = false;
-			this.isGameRunning = true;
-		}
-	
 	}
 
 }

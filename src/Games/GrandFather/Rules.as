@@ -13,8 +13,9 @@ package Games.GrandFather
 		
 		private var backgroundPath:String = "Data/images/RulesBackgrounds/rulesbg0.png";
 		
-		public function Rules() 
+		public function Rules(rulesPar:String) 
 		{
+			this.rules = rulesPar;
 			Assistant.fillContainerWithImg(this as Sprite, backgroundPath, 800, 515);
 			writeRules();
 			
