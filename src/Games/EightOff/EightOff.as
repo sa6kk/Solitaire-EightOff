@@ -26,10 +26,13 @@ package Games.EightOff
 		
 		private var gameEngine:Engine;
 		
+		private var isGameRunning:Boolean = true;
+		private var isWin:Boolean = false;
+		
 		public function EightOff() 
 		{
 			loadPiles();
-			gameEngine = new Engine(this as Sprite, this.extraPiles, this.fieldPiles, this.sidePiles, this.deck);	
+			gameEngine = new Engine(this as Sprite, this.extraPiles, this.fieldPiles, this.sidePiles, this.deck,this.isGameRunning,this.isWin);	
 		}
 		
 		private function loadPiles():void {
@@ -70,6 +73,13 @@ package Games.EightOff
 				sidePile.x = this.StartPointSidePiles.x;
 				sidePile.y = this.StartPointSidePiles.y + (interval + this.CARD_HEIGHT) * sidePileIndex;
 			}	
+		}
+		
+		public function get IsWin():Boolean {
+			return this.isWin	
+		}
+		public function get IsGameRunning():Boolean {
+			return this.isGameRunning	
 		}
 		
 	}

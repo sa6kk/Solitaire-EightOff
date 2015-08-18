@@ -46,6 +46,14 @@ package Games.EightOff
 		public function get TopCard():Card {
 			return this.topCard;	
 		}
+		
+		public function get Suit():String {
+			return this.suit;	
+		}
+		
+		public function get CardsCount():int {
+			return this.cards.length;	
+		}
 	}
 
 }

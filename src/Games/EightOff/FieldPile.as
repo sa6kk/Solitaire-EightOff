@@ -15,7 +15,7 @@ package Games.EightOff
 		private const CARD_WIDTH:int = 65;
 		private const CARD_HEIGHT:int = 100;
 		
-		private var interval:int = 20;
+		private var interval:int = 40;
 		
 		public function FieldPile() 
 		{
@@ -51,22 +51,34 @@ package Games.EightOff
 		}
 		
 		public function giveCards(startCard:Card):Array {
-			var givenCards:Array = [];
+			var cardsForGive:Array = [];
 			var indexOfStartCard:int = this.cards.indexOf(startCard);
 			var numberOfCardsForGive:int = 0;
-			for (var cardIndex:int = indexOfStartCard; cardIndex < cards.length; indexOfStartCard++) {
+			for (var cardIndex:int = indexOfStartCard; cardIndex < cards.length; cardIndex++) {
 				var currentCard:Card = this.cards[cardIndex];
-				givenCards.push(currentCard);
+				cardsForGive.push(currentCard);
 				this.removeChild(currentCard);
 				numberOfCardsForGive++;
 			}
 			this.cards.splice(indexOfStartCard, numberOfCardsForGive);
 			determineTopCard();
-			return givenCards;
+			return cardsForGive;
 		}
 		
 		private function determineTopCard():void {
 			this.topCard = this.cards[this.cards.length - 1];	
+		}
+		
+		public function get TopCard():Card {
+			return this.topCard;	
+		}
+		
+		public function get CardsCount():int {
+			return this.cards.length;	
+		}
+		
+		public function get Cards():Array {
+			return this.cards;
 		}
 	}
 

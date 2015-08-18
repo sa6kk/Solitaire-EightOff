@@ -43,6 +43,15 @@ package Games.EightOff
 			return cardForGive;
 		}
 		
+		public function get isEmpty():Boolean {
+			if (this.card.length == 0) {
+				return true;
+			}	
+			else {
+				return false;	
+			}
+		}
+		
 	}
 
 }

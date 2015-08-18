@@ -10,6 +10,7 @@ package Games.EightOff
 	{
 		private var cards:Array;
 		private var firstCard:Card;
+		private var cardsCount:int = 0;
 		
 		private var interval:int = 20;
 		
@@ -22,6 +23,7 @@ package Games.EightOff
 			this.cards = [];
 			this.cards.push(card);
 			this.addChild(card);
+			determineFirstCard();
 		}
 		
 		public function giveCard():Card {
@@ -59,6 +61,10 @@ package Games.EightOff
 		
 		public function get FirstCard():Card {
 			return this.firstCard;	
+		}
+		
+		public function get CardsCount():int {
+			return this.cards.length;	
 		}
 		
 	}
