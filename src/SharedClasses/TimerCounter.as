@@ -18,11 +18,13 @@ package SharedClasses
 		private var minutes:Number;
 		private var hours:Number;
 		private var tField:TextField;
-		private var _timerTxtColor:int;
+		private var _timerTxtColor:uint;
+		private var textSize:int;
 		
-		public function TimerCounter(timerTxtColor:int = 0x000000)
+		public function TimerCounter(timerTxtColor:uint = 0,textSizePar:int = 15)
 		{
 			_timerTxtColor = timerTxtColor;
+			this.textSize = textSizePar;
 			loadTimer();
 		}
 		
@@ -40,12 +42,8 @@ package SharedClasses
 			var timer:Timer = new Timer(1000);
 			
 			tField = new TextField();
-			tField.y = 1;
-			tField.height = 30;
-			tField.width = 200;
-			tField.x = 355;
 			
-			var txtFormat:TextFormat = new TextFormat('Comic Sans MS', 15, _timerTxtColor, true);
+			var txtFormat:TextFormat = new TextFormat('Comic Sans MS', this.textSize, _timerTxtColor, true);
 			txtFormat.align = "center";
 			tField.defaultTextFormat = txtFormat;
 			tField.mouseEnabled = false;
@@ -53,6 +51,11 @@ package SharedClasses
 			
 			timer.addEventListener(TimerEvent.TIMER, clock);
 			timer.start();
+		}
+		
+			
+		public function get GetTime():String {
+			return tField.text;
 		}
 		
 		private function clock(evt:TimerEvent):void
@@ -70,5 +73,6 @@ package SharedClasses
 			}
 			tField.text = String(tHours + ":" + tMinutes + ":" + tSeconds);
 		}
+	
 	}
 }

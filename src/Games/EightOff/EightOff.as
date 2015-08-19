@@ -53,9 +53,10 @@ package Games.EightOff
 		}
 		
 		private function loadTimer():void {
-			this.timer = new TimerCounter();
+			this.timer = new TimerCounter(0,10);
+			this.timer.alpha = 0.4;
 			this.addChild(timer);
-			timer.x = -400;
+			timer.x = 0;
 		}
 		
 		private function loadButtons():void
