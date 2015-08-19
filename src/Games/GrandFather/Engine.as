@@ -10,7 +10,6 @@ package Games.GrandFather
 	
 	public class Engine
 	{
-		private var rulesText:String = "	This solitaire uses 104 cards (2 decks). You have 20 tableau piles with one card per pile and 8 foundations. \n Aces (one of each suit) are moved to the left four foundations as they become available. \n Kings (one of each suit) are moved to the right four foundations as they become available. \n The object of the game: To build the foundation Aces up in suit to Kings, to build the foundation Kings down in suit to Aces. \n The rules: The top cards of tableau piles are available for play on foundations. You can move the cards from the waste pile to any tableau pile regardless of suit or rank. Each pile may contain up to 2 cards. Spaces are filled automatically from the waste or the stock piles. Cards cannot be moved from one tableau pile to another. \n When you have made all the moves initially available, begin turning over cards from the stock to the waste pile. The top card of the waste pile is available for play on the foundations or the tableau. \n There is one redeal.";
 		private var deck:Deck;
 		private var deckPile:DeckPile;
 		private var fieldPiles:Array;
@@ -22,17 +21,12 @@ package Games.GrandFather
 		private var takenCardFieldPile:FieldPile;
 		private var takenCardDeckPile:DeckPile;
 		
-		private var buttonRules:GameButton;
-		private var isRulesHidden:Boolean= true;
-		
 		private var isThereEmpties:Boolean = true;//is field var for use object as reference
-		
-		private var rules:Rules = new Rules(rulesText);
 		
 		private var isGameRunning:Boolean;
 		private var isWin:Boolean;
 		
-		public function Engine(deckPar:Deck, deckPilePar:DeckPile, fieldPilesPar:Array, sidePilesPar:Array, generalContainerPar:Sprite,isGameRunningPar:Boolean,isWinPar:Boolean,buttonRulesPar:GameButton)
+		public function Engine(deckPar:Deck, deckPilePar:DeckPile, fieldPilesPar:Array, sidePilesPar:Array, generalContainerPar:Sprite,isGameRunningPar:Boolean,isWinPar:Boolean)
 		{
 			this.deck = deckPar;
 			this.deckPile = deckPilePar;
@@ -41,7 +35,6 @@ package Games.GrandFather
 			this.generalContainer = generalContainerPar;
 			this.isGameRunning = isGameRunningPar;
 			this.isWin = isWinPar;
-			this.buttonRules = buttonRulesPar;
 			dealing();
 			makeInteraction();
 		}
@@ -89,26 +82,6 @@ package Games.GrandFather
 			makeDeckInteractive();
 			makeDeckPileInteractive();
 			makeInteractiveFieldPiles();
-			makeButtonRulesInteractive();
-		}
-		
-		/// BUTTONS INTERACTION - > DOESN WORK CLASS RULES
-		private function makeButtonRulesInteractive():void {
-			Assistant.addEventListenerTo(this.buttonRules, MouseEvent.CLICK, showHideRules);
-		}
-		
-		private function showHideRules(e:MouseEvent):void {
-			if (this.isRulesHidden) {
-				//todo: MOTION Rules are Appear
-				this.generalContainer.addChild(rules);
-				this.isRulesHidden = false;
-			}
-			
-			else 
-			{
-				this.generalContainer.removeChild(rules);
-				this.isRulesHidden = true;
-			}
 		}
 		
 		
